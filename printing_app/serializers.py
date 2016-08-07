@@ -24,15 +24,15 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
 
-class PhotoSerializer(serializers.HyperlinkedModelSerializer):
+class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
-        fields = ('id', 'photo')
+        fields = ('id', 'photo', 'album')
 
 
-class AlbumSerializer(serializers.HyperlinkedModelSerializer):
-    photos = PhotoSerializer(many=True)
+class AlbumSerializer(serializers.ModelSerializer):
+    photos = PhotoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Album
-        fields = ('id', 'name', 'photos')
+        fields = ('id', 'name', 'owner', 'photos')

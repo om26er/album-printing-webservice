@@ -80,6 +80,7 @@ class CreatePhoto(CreateAPIView):
     serializer_class = PhotoSerializer
 
     def post(self, request, *args, **kwargs):
+        request.data.update({'album': self.kwargs['pk']})
         request.data.update({'owner': request.user.id})
         return super().post(request, *args, **kwargs)
 
@@ -91,4 +92,5 @@ class PhotoView(RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return Photo.objects.filter(
             id=self.kwargs['pk'],
+            album_id=self.kwargs['album']
         )

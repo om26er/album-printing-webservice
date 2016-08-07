@@ -3,3 +3,6 @@ images/
 reset.sh
 .idea/
 templates/
+album_printing_service/__pycache__/
+printing_app/__pycache__/
+printing_app/migrations/

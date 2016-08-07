@@ -11,8 +11,11 @@ urlpatterns = [
     url(r'^api/change-password$', v.ChangePasswordView.as_view()),
     url(r'^api/me$', v.Profile.as_view()),
 
-    url(r'^api/user/album$', v.ListCreateAlbum.as_view()),
-    url(r'^api/user/album/(?P<pk>\d+)$', v.AlbumView.as_view()),
-    url(r'^api/user/photo$', v.CreatePhoto.as_view()),
-    url(r'^api/user/photo/(?P<pk>\d+)$', v.PhotoView.as_view()),
+    url(r'^api/user/albums$', v.ListCreateAlbum.as_view()),
+    url(r'^api/user/albums/(?P<pk>\d+)$', v.AlbumView.as_view()),
+    url(r'^api/user/albums/(?P<pk>\d+)/photos$', v.CreatePhoto.as_view()),
+    url(
+        r'^api/user/albums/(?P<album>\d+)/photos/(?P<pk>\d+)$',
+        v.PhotoView.as_view()
+    ),
 ]
